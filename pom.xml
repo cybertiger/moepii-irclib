@@ -3,7 +3,7 @@
 
     <groupId>org.schwering</groupId>
     <artifactId>irclib</artifactId>
-    <version>666.0</version>
+    <version>666.1-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
     <name>irclib</name>
