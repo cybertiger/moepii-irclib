@@ -10,6 +10,12 @@
     <name>irclib</name>
     <url>http://moepii.sourceforge.net/</url>
 
+    <scm>
+      <url>https://github.com/cybertiger/moepii-irclib/</url>
+      <connection>scm:git:git://github.com/cybertiger/moepii-irclib.git</connection>
+      <developerConnection>scm:git:git@github.com:cybertiger/moepii-irclib.git</developerConnection>
+    </scm>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <irclib.osgi.version>version=${project.version}</irclib.osgi.version>
@@ -72,6 +78,13 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <extensions>
+          <extension>
+            <groupId>org.apache.maven.wagon</groupId>
+            <artifactId>wagon-webdav</artifactId>
+            <version>1.0-beta-2</version>
+          </extension>
+        </extensions>
     </build>
 
     <dependencies>
@@ -81,4 +94,17 @@
             <version>5.14.2</version>
         </dependency>
     </dependencies>
+
+  <distributionManagement>
+    <repository>
+      <id>cyberiantiger.repo</id>
+      <name>CyberianTiger Maven Repository</name>
+      <url>dav:http://cyberiantiger.org/maven</url>
+    </repository>
+    <snapshotRepository>
+      <id>cyberiantiger.repo</id>
+      <name>CyberianTiger Maven Repository</name>
+      <url>dav:http://cyberiantiger.org/maven</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>
