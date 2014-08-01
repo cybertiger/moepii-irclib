@@ -182,7 +182,7 @@ public class IRCConnection extends Thread {
 	/**
 	 * Indicates how to handle unexpected exceptions.
 	 */
-	private int exceptionHandling = RETHROW_RUNTIME_EXCEPTION;
+	private int exceptionHandling = USE_EXCEPTION_HANDLER;
 	
 	/**
 	 * A number of unexpected exceptions are simply ignored. Not recommended.
@@ -198,6 +198,11 @@ public class IRCConnection extends Thread {
 	 * The stack trace of unexpected exceptions is printed to the debug stream.  
 	 */
 	public static final int PRINT_TO_DEBUG_STREAM = 2;
+
+        /**
+         * The exception is passed to this thread's exception handler.
+         */
+        public static final int USE_EXCEPTION_HANDLER = 3;
 	
 // ------------------------------
 	
@@ -724,6 +729,9 @@ public class IRCConnection extends Thread {
 			throw new RuntimeException(exc);
 		case IGNORE_EXCEPTION:
 			break;
+                case USE_EXCEPTION_HANDLER:
+                default:
+                    getUncaughtExceptionHandler().uncaughtException(this, exc);
 		}
 	}
 	
